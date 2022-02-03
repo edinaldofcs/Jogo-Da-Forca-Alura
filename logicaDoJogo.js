@@ -92,7 +92,7 @@ function adicionarAoCemiterio(letra) {
 function verificarDerrota(cont, texto){    
     if(cont == texto){
         setTimeout(() => {           
-            res();
+            animarMorte();
             //alert('derrota');
         }, 200);
     } 
