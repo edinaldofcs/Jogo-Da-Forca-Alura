@@ -1,170 +1,102 @@
+// Variáveis do jogo
+const cemiterio = document.getElementById('cemiterio');
+const dificuldade = document.getElementById('menu-select');
+const container = document.getElementById('container');
 
 var palavra = ['ALURA', 'JAVASCRIPT', 'ALURAVERSO', 'REACT'];
-// 'ALURA', 'JAVASCRIPT', 'ALURAVERSO', 'REACT'
-const div = document.getElementById('container')
-const cemiterio = document.getElementById('cemiterio')
-const dificuldade = document.getElementById('menu-select')
-var numero;
-var selecionar = (val) => document.querySelectorAll(val);
-var criarElemento = (el) => document.createElement(el);
-var jogo;
-var fim;
+var numeroLista, espacoLetrasCertas, espacoLetrasErradas;
+var letrasNoCemiterio = 0;
+var qtdeLetrasEncontradas = 0;
 
 
-function setElemento(tag, pai, nomeId, nomeClass) {
-    var el = criarElemento(tag)
-    pai.appendChild(el)
-    el.setAttribute('id', nomeId)
-    el.setAttribute('class', nomeClass)
+//Funções - Regras do jogo
+const selecionarElementos = (val) => document.querySelectorAll(val);
+const criarElemento = (el) => document.createElement(el);
+
+function setElemento(tag, tagPai, nomeId, nomeClass) {
+    var el = criarElemento(tag);
+    tagPai.appendChild(el);
+    el.setAttribute('id', nomeId);
+    el.setAttribute('class', nomeClass);
     return el;
 }
 
-function montarJogo(palavra) {
-
-
-    for (var i = 0; i < palavra.length; i++) {
-
-        let el = setElemento('div', div, 'valor', 'valor')
+function montarJogo(palavraEscolhida) {
+    for (var i = 0; i < palavraEscolhida.length; i++) {
+        let el = setElemento('div', container, 'valor', 'valor');
     }
-
-    jogo = selecionar('#valor')
-
+    espacoLetrasCertas = selecionarElementos('#valor');
 }
 
 function escolherPalavra() {
-
-    numero = Math.floor(Math.random() * palavra.length)
-
-    montarJogo(palavra[numero]);
+    numeroLista = Math.floor(Math.random() * palavra.length);
+    montarJogo(palavra[numeroLista]);
 }
 
-
-
-
-const entradas = document.querySelector('#teste')
 
 document.addEventListener('keypress', (e) => {
-
     var teste = e.key.replaceAll(/[^a-zA-Z]/g, '').toUpperCase();
-
     teste && verificarSeALetraExiste(teste);
-
 })
 
-var numCemiterio = 0;
+
 function verificarSeALetraExiste(letra) {
-
-    if (palavra[numero].includes(letra)) {
-
-        inserirTexto(palavra[numero], letra);
-
+    if (palavra[numeroLista].includes(letra)) {
+        inserirTexto(palavra[numeroLista], letra);
     } else {
-
         adicionarAoCemiterio(letra);
-
     }
-
 }
 
-var cont = 0;
+
 function inserirTexto(texto, letra) {
     for (var i = 0; i < texto.length; i++) {
-        if (letra == texto[i] && jogo[i].innerHTML == '') {
-            jogo[i].innerHTML = letra
-            cont ++;
+        if (letra == texto[i] && espacoLetrasCertas[i].innerHTML == '') {
+            espacoLetrasCertas[i].innerHTML = letra;
+            qtdeLetrasEncontradas ++;
         }
     }
-
-    verificarVitoria(cont,texto.length);
-    
+    verificarVitoria(qtdeLetrasEncontradas,texto.length);    
 }
 
-function verificarVitoria(cont, texto){
-    
+function verificarVitoria(cont, texto){    
     if(cont == texto){
         setTimeout(() => {
-            alert('vitoria')
+            alert('vitoria');
         }, 200);
     } 
 }
 
 function adicionarAoCemiterio(letra) {
-
-    if (numCemiterio == 0) {
-
-        let el = setElemento('div', cemiterio, 'fim', 'fim')
+    if (letrasNoCemiterio == 0) {
+        let el = setElemento('div', cemiterio, 'fim', 'fim');
         el.innerHTML = letra;
-        numCemiterio++;
-        fim = selecionar('#fim')
+        letrasNoCemiterio++;
+        espacoLetrasErradas = selecionarElementos('#fim');
     } else {
-
-        var contem = false
-
-        for (var i = 0; i < fim.length; i++) {
-            if (fim[i].innerHTML.includes(letra)) contem = true
+        var contem = false;
+        for (var i = 0; i < espacoLetrasErradas.length; i++) {
+            if (espacoLetrasErradas[i].innerHTML.includes(letra)) contem = true;
         }
-
         if (contem == false) {
-
-            let el = setElemento('div', cemiterio, 'fim', 'fim')
+            let el = setElemento('div', cemiterio, 'fim', 'fim');
             el.innerHTML = letra;
-            numCemiterio++;
-
+            letrasNoCemiterio++;
         }
-
     }
-
-    fim = selecionar('#fim')
-
-    verificarDerrota(numCemiterio, dificuldade.value)
-    
+    espacoLetrasErradas = selecionarElementos('#fim');
+    verificarDerrota(letrasNoCemiterio, dificuldade.value);    
 }
 
 
-function verificarDerrota(cont, texto){
-    
+function verificarDerrota(cont, texto){    
     if(cont == texto){
-        setTimeout(() => {
-            alert('derrota')
+        setTimeout(() => {           
+            res();
+            //alert('derrota');
         }, 200);
     } 
 }
 //escolherPalavra();
 
 //-------------------------
-const input = document.getElementById('input')
-var save = '';
-
-const inserir = document.getElementById('inserir')
-const iniciar = document.getElementById('iniciar')
-
-input.addEventListener('input', () => {
-    
-
-    if (input.value.length < 9) {
-        input.value = input.value.replaceAll(/[^a-zA-Z]/g, '').toUpperCase()
-        save = input.value
-    } else {
-        input.value = save
-    }
-
-})
-
-inserir.addEventListener('click', ()=>{
-
-    if(input.value.length >= 5){
-        palavra.push(input.value)
-        input.value = ''
-        console.log(palavra[0])
-    }  
-})
-
-iniciar.addEventListener('click', ()=>{
-    
-    escolherPalavra();
-    menu.style.display = 'none'
-    telaInicial.style.display = 'none'
-    body.classList.add('body')
-    imgMenu.style.display = 'none';
-    jogos.style.display = 'block';
-})

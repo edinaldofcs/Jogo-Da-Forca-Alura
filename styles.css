@@ -208,17 +208,25 @@ body{
     flex-direction: row;
     justify-content: center;
     align-items: baseline;
-    background-color: rgb(212, 212, 211);
+    background-color: rgba(212, 212, 211, 0.4);
     height: 100px;
     text-align: center;
 }
 .cemiterio{
     display: flex;
     flex-direction: row;
-    margin-top: 150px;
+    margin-top: 50px;
     justify-content: center;
     align-items: baseline;
     height: 100px;
     text-align: center;   
-    background-color: rgb(150, 176, 231);    
+    background-color: rgba(150, 176, 231, 0.5);    
+}
+
+
+canvas{
+    position: fixed;
+    top:0px;
+    left: 50px;
+    z-index: 1;
 }
