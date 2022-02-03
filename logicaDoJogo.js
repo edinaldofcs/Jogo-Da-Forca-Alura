@@ -35,6 +35,9 @@ function escolherPalavra() {
 
 
 document.addEventListener('keypress', (e) => {
+
+    if(letrasNoCemiterio == dificuldade.value) return;
+
     var teste = e.key.replaceAll(/[^a-zA-Z]/g, '').toUpperCase();
     teste && verificarSeALetraExiste(teste);
 })
@@ -97,6 +100,4 @@ function verificarDerrota(cont, texto){
         }, 200);
     } 
 }
-//escolherPalavra();
 
-//-------------------------

@@ -15,15 +15,15 @@
 body{
     width: 100%;
     height: 100vh;
-    background-image: url('https://thumbs.gfycat.com/HeavenlyDisloyalGuillemot-max-1mb.gif');
-    background-position: center;
-    background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
+    background-color: black;
 }
 
-.body{
-    background-image: none;
+.body-img{
+    position: absolute;
+    width: 100%;
+    opacity: 0.3;
 }
 
 .tela-inicial{
@@ -182,12 +182,10 @@ body{
     width: 100%;
     height: 100vh;
     display: none;
-    background-image: url('https://i.pinimg.com/564x/bd/11/20/bd112023afc5e100630f7b0c2692c3c7.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-color: black;
     padding: 400px 0;
     overflow: hidden;
+    color: white;
 }
 
 .valor, .fim{     
@@ -196,7 +194,7 @@ body{
     margin: 0 10px;
     margin-top: 25px;
     height: 50px;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid rgb(255, 255, 255);
     text-align: center;
     
 }
@@ -228,6 +226,16 @@ body{
     /* background-color: rgba(150, 176, 231, 0.5);     */
 }
 
+.jogo-novoJogo{
+    position: absolute;
+    right: 0;
+    margin: 10px;
+    top: 0;
+    width: fit-content;
+    padding: 0 20px;
+    cursor: pointer;
+    z-index: 999;
+}
 
 canvas{
     position: fixed;

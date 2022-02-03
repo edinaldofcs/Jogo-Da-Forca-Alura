@@ -61,11 +61,17 @@ function posicao1() {
   
 }
 
+function gradiente(){
+    var grd = pincel.createRadialGradient(75,50,5,90,60,100);
+    grd.addColorStop(0,"purple");
+    grd.addColorStop(1,"rgba(0,0,0,0.7)");
+}
+
 function posicao2() {
     quadrado(345, 50, 10, 150, 'red', 1);//corda
     forca();
     quadrado(345, 220, 10, 120, 'white', 1);//tronco
-    circulo(350, 200, 25, 'pink');
+    circulo(350, 200, 25, 'purple');
     desenhoLivre(350, 235, 380, 280, "white"); //braço esquerdo
     desenhoLivre(350, 235, 320, 280, "white"); //braço direito
     //desenhaEsquadro(350,340,380,370, "white");
@@ -76,21 +82,20 @@ function posicao2() {
     quadrado(355, 325, 8, 80, 'white', 1);//perna esquerda
     triangulo(350, 300, 400, 325, "white");//cintura
 }
-var pos = 1;
+var posicaoInicial = 1;
 posicao1();
 const animarMorte = () => {
-
 
     pincel.clearRect(0, 0, 600, 600);
     pincel.fillStyle = "rgba(0,0,0,0)";
     pincel.fillRect(0, 0, 600, 600);
 
-    if (pos == 1) {
+    if (posicaoInicial == 1) {
 
         posicao2();
-        pos = 2
+        posicaoInicial = 2
     } else {
         posicao1();
-        pos = 1;
+        posicaoInicial = 1;
     }
 }
