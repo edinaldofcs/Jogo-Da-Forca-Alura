@@ -21,7 +21,7 @@ body{
 }
 
 .body-img{
-    position: absolute;
+    position: fixed;
     width: 100%;
     opacity: 0.3;
 }
