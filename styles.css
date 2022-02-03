@@ -19,6 +19,7 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: hidden;
 }
 
 .body{
@@ -181,7 +182,10 @@ body{
     width: 100%;
     height: 100vh;
     display: none;
-    background-color: rgb(19, 18, 18);
+    background-image: url('https://i.pinimg.com/564x/bd/11/20/bd112023afc5e100630f7b0c2692c3c7.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     padding: 400px 0;
     overflow: hidden;
 }
@@ -208,9 +212,10 @@ body{
     flex-direction: row;
     justify-content: center;
     align-items: baseline;
-    background-color: rgba(212, 212, 211, 0.4);
+    /* background-color: rgba(212, 212, 211, 0.4); */
     height: 100px;
     text-align: center;
+    margin-left: 70px;
 }
 .cemiterio{
     display: flex;
@@ -220,7 +225,7 @@ body{
     align-items: baseline;
     height: 100px;
     text-align: center;   
-    background-color: rgba(150, 176, 231, 0.5);    
+    /* background-color: rgba(150, 176, 231, 0.5);     */
 }
 
 
@@ -228,5 +233,6 @@ canvas{
     position: fixed;
     top:0px;
     left: 50px;
-    z-index: 1;
+    z-index: 0;
+    display: none;
 }

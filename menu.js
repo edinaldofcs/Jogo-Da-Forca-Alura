@@ -38,6 +38,7 @@ iniciar.addEventListener('click', ()=>{
     body.classList.add('body')
     imgMenu.style.display = 'none';
     esconderMostrarJogo.style.display = 'block';
+    tela.style.display = 'block';
     escolherPalavra();
 })
 
