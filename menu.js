@@ -6,6 +6,7 @@ const input = document.getElementById('input')
 const inserir = document.getElementById('inserir')
 const iniciar = document.getElementById('iniciar')
 const reiniciar = document.getElementById('reiniciar')
+const reset = document.getElementById('reset')
 
 const telainicialTexto1 = document.querySelector('#tela-inicial-jogo');
 const telainicialTexto2 = document.querySelector('#tela-inicial-forca');
@@ -13,6 +14,8 @@ const telaInicial = document.querySelector('#tela-inicial');
 const body = document.querySelector('body');
 
 var textoTemporario = '';
+var theEnd = document.getElementById('theend')
+const imagens = ['https://y.yarn.co/dca4b147-ff9f-4881-8bbd-aa182eb4fbb3_text.gif', 'https://i.gifer.com/8EzY.gif'];
 
 input.addEventListener('input', () => {   
     if (input.value.length < 9) {
@@ -42,6 +45,11 @@ function iniciarJogo(){
     imgMenu.style.display = 'none';
     esconderMostrarJogo.style.display = 'block';
     tela.style.display = 'block';
+    theEnd.style.opacity = '0%';
+    posicaoInicial = true;
+    dificuldade = document.getElementById('menu-select');
+    quantidadeDeBlocos = dificuldade.value;
+    plataforma(dificuldade.value);
     escolherPalavra();
 }
 
@@ -64,6 +72,11 @@ reiniciar.addEventListener('click', ()=>{
     posicaoInicial = 2;
     animarMorte();    
     iniciarJogo();
+})
+
+
+reset.addEventListener('click', ()=>{
+    location.reload();
 })
 
 function typeWrite(texto1, texto2) {

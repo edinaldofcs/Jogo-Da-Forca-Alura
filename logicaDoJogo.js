@@ -1,13 +1,20 @@
 // Variáveis do jogo
 const cemiterio = document.getElementById('cemiterio');
-const dificuldade = document.getElementById('menu-select');
 const container = document.getElementById('container');
+const sons = ['yes.mp3', 'errojogo.mp3','morte.mp3','acerto.mp3']
 
+var dificuldade;
 var palavra = ['ALURA', 'JAVASCRIPT', 'ALURAVERSO', 'REACT'];
 var numeroLista, espacoLetrasCertas, espacoLetrasErradas;
 var letrasNoCemiterio = 0;
 var qtdeLetrasEncontradas = 0;
+var quantidadeDeBlocos;
 
+
+const tocar = (som)=>{
+    var audio = new Audio(som);
+    audio.play();
+}
 
 //Funções - Regras do jogo
 const selecionarElementos = (val) => document.querySelectorAll(val);
@@ -36,7 +43,7 @@ function escolherPalavra() {
 
 document.addEventListener('keypress', (e) => {
 
-    if(letrasNoCemiterio == dificuldade.value) return;
+    if (letrasNoCemiterio == dificuldade.value) return;
 
     var teste = e.key.replaceAll(/[^a-zA-Z]/g, '').toUpperCase();
     teste && verificarSeALetraExiste(teste);
@@ -56,18 +63,22 @@ function inserirTexto(texto, letra) {
     for (var i = 0; i < texto.length; i++) {
         if (letra == texto[i] && espacoLetrasCertas[i].innerHTML == '') {
             espacoLetrasCertas[i].innerHTML = letra;
-            qtdeLetrasEncontradas ++;
+            qtdeLetrasEncontradas++;
         }
     }
-    verificarVitoria(qtdeLetrasEncontradas,texto.length);    
+
+    tocar(sons[0]);
+    verificarVitoria(qtdeLetrasEncontradas, texto.length);
 }
 
-function verificarVitoria(cont, texto){    
-    if(cont == texto){
+function verificarVitoria(cont, texto) {
+    if (cont == texto) {
         setTimeout(() => {
-            alert('vitoria');
-        }, 200);
-    } 
+            tocar(sons[3]);
+            theEnd.style.opacity = '100%';
+            theEnd.src = imagens[0];
+        }, 1000);
+    }
 }
 
 function adicionarAoCemiterio(letra) {
@@ -88,16 +99,24 @@ function adicionarAoCemiterio(letra) {
         }
     }
     espacoLetrasErradas = selecionarElementos('#fim');
-    verificarDerrota(letrasNoCemiterio, dificuldade.value);    
+    tocar(sons[1])
+    verificarDerrota(letrasNoCemiterio, dificuldade.value);
+    posicao1();
+    quantidadeDeBlocos--;
+    plataforma(quantidadeDeBlocos)
 }
 
 
-function verificarDerrota(cont, texto){    
-    if(cont == texto){
-        setTimeout(() => {           
+function verificarDerrota(cont, texto) {
+    if (cont == texto) {
+        setTimeout(() => {
             animarMorte();
-            //alert('derrota');
-        }, 200);
-    } 
+            tocar(sons[2])
+        }, 500);
+        setTimeout(() => {
+            theEnd.style.opacity = '100%';
+            theEnd.src = imagens[1];
+        }, 2000);
+    }
 }
 
