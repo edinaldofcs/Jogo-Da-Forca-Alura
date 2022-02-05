@@ -1,7 +1,7 @@
 // Variáveis do jogo
 const cemiterio = document.getElementById('cemiterio');
 const container = document.getElementById('container');
-const sons = ['yes.mp3', 'errojogo.mp3','morte.mp3','acerto.mp3']
+const sons = ['./sounds/yes.mp3', './sounds/errojogo.mp3', './sounds/morte.mp3', './sounds/acerto.mp3']
 
 var dificuldade;
 var palavra = ['ALURA', 'JAVASCRIPT', 'ALURAVERSO', 'REACT'];
@@ -11,7 +11,7 @@ var qtdeLetrasEncontradas = 0;
 var quantidadeDeBlocos;
 
 
-const tocar = (som)=>{
+const tocar = (som) => {
     var audio = new Audio(som);
     audio.play();
 }
@@ -43,7 +43,8 @@ function escolherPalavra() {
 
 document.addEventListener('keypress', (e) => {
 
-    if (letrasNoCemiterio == dificuldade.value) return;
+    if (esconderMostrarJogo.style.display == '') return;
+    if (letrasNoCemiterio == dificuldade.value || qtdeLetrasEncontradas == palavra[numeroLista].length) return;
 
     var teste = e.key.replaceAll(/[^a-zA-Z]/g, '').toUpperCase();
     teste && verificarSeALetraExiste(teste);
@@ -67,6 +68,7 @@ function inserirTexto(texto, letra) {
         }
     }
 
+    pintarLetras(letra, 'green');
     tocar(sons[0]);
     verificarVitoria(qtdeLetrasEncontradas, texto.length);
 }
@@ -76,6 +78,7 @@ function verificarVitoria(cont, texto) {
         setTimeout(() => {
             tocar(sons[3]);
             theEnd.style.opacity = '100%';
+            theEnd.style.zIndex = '99';
             theEnd.src = imagens[0];
         }, 1000);
     }
@@ -99,6 +102,7 @@ function adicionarAoCemiterio(letra) {
         }
     }
     espacoLetrasErradas = selecionarElementos('#fim');
+    pintarLetras(letra, 'red');
     tocar(sons[1])
     verificarDerrota(letrasNoCemiterio, dificuldade.value);
     posicao1();
@@ -115,8 +119,50 @@ function verificarDerrota(cont, texto) {
         }, 500);
         setTimeout(() => {
             theEnd.style.opacity = '100%';
+            theEnd.style.zIndex = '99';
             theEnd.src = imagens[1];
         }, 2000);
     }
 }
+
+
+
+//==============
+const alfabeto = document.getElementById('alfabeto')
+var botoesLetras;
+
+function setAlfabeto() {
+    for (var i = 0; i < 26; i++) {
+        botoesLetras = document.createElement('button')
+        alfabeto.appendChild(botoesLetras)
+        botoesLetras.classList.add('letra')
+        botoesLetras.setAttribute('id', `letra${String.fromCharCode(65 + i)}`)
+        botoesLetras.innerHTML = String.fromCharCode(65 + i)
+    }
+
+}
+
+function pintarLetras(idLetra, cor) {
+    var todos = document.querySelectorAll('.letra')
+    for (const index in todos) {
+        if (`letra${idLetra}` == todos[index].id) {
+            todos[index].style.backgroundColor = cor
+        }
+    }
+
+}
+
+function pintarTudo() {
+    var todo = document.querySelectorAll('.letra')
+    for (var i = 0; i < todo.length; i++) {
+        todo[i].style.backgroundColor = 'rgb(240, 240, 240)'
+    }
+
+}
+
+alfabeto.addEventListener('click', (event) => {
+    if (letrasNoCemiterio == dificuldade.value || qtdeLetrasEncontradas == palavra[numeroLista].length) return;
+    if (event.target.id == 'alfabeto') return;
+    verificarSeALetraExiste(event.target.innerHTML);
+})
 

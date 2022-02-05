@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'help';
-    src: url('/sangue/ChelseaMarket-Regular.ttf');
+    src: url('/fonts/ChelseaMarket-Regular.ttf');
 }
 
 *{
@@ -14,19 +14,22 @@
 
 body{
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    /* overflow: hidden; */
+    background-color: white;
+    background-image: url('https://thumbs.gfycat.com/HeavenlyDisloyalGuillemot-max-1mb.gif');
     background-size: cover;
-    overflow: hidden;
-    background-color: black;
-    max-width: 1200px;
-    max-height: 800px;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 auto;
 }
 
-.body-img{
+/* .body-img{
     position: fixed;
     width: 100%;
+    height: 100vh;
     opacity: 0.3;
-}
+} */
 
 .tela-inicial{
     width: 60vw;
@@ -69,7 +72,7 @@ body{
 }
 
 .menu:hover{
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 .menu-config{    
@@ -77,20 +80,21 @@ body{
     position: fixed;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     background-color: black;
+    align-items: center;
     right: 0;
     overflow: hidden;
-    border-left: 5px solid #ccc;
+    border-left: 2px solid #ccc;
+    width: 100%;
 }
 
 .menu-show{
     transition: 0.5s;
-    width: 400px;
+    width: 100%;    
 }
 
 .menu-hide{
-    transition: 1s;
+    transition: 0.5s;
     width: 0px;
 }
 
@@ -143,21 +147,35 @@ body{
     width: 100%;
     height: 100vh;
     display: none;
-    background-color: white;
-    padding: 400px 0;
-    overflow: hidden;
     color: rgb(0, 0, 0);
+    background-color: rgba(255,255,255,0.9);
 }
 
-.valor, .fim{     
-    width: 50px;
-    font-size: 40px;
-    margin: 0 10px;
-    margin-top: 25px;
+canvas{    
+    margin: 0 auto;
+    z-index: 999;
+    /* display: none; */
+}
+.container, .cemiterio{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgba(212, 212, 211, 0.4); */
     height: 50px;
+    font-size: 16px;
+    text-align: center;    
+    width: fit-content;
+    margin: 10px auto;
+}
+.valor, .fim{     
+    width: fit-content;
+    min-width: 20px;
+    font-size: 20px;
+    margin: 0 2px;
+    height: 30px;
     border-bottom: 2px solid rgb(0, 0, 0);
-    text-align: center;
-    padding-bottom: 5px;
+    padding-bottom: 2px;
 }
 
 .fim{
@@ -165,60 +183,77 @@ body{
     color: red;
 }
 
-
-.container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: baseline;
-    /* background-color: rgba(212, 212, 211, 0.4); */
-    height: 100px;
-    text-align: center;
-    margin-left: 70px;
-}
-.cemiterio{
-    display: flex;
-    flex-direction: row;
-    margin-top: 50px;
-    justify-content: center;
-    align-items: baseline;
-    height: 100px;
-    text-align: center;   
-    /* background-color: rgba(150, 176, 231, 0.5);     */
+.fim-img{
+    max-height: 30px;
 }
 
-#botoes{
-    position: absolute;
-    width: 100%;
+.alfabeto{
+    width: 80%;
+    height: fit-content;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: white;
+    border: 1px solid black;
+    margin: 0 auto;
+}
+.letra{
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+    border-color: #ccc;
+    cursor: pointer;
+}
+
+.botoes{
+    margin-top: 5px;
     display: flex;
     flex-direction: row-reverse;
-    top: 0;
+    justify-content: center;
+    align-items: center;
 }
-.jogo-novoJogo{
-    margin: 10px;
-    top: 0;
-    width: fit-content;
-    padding: 0 20px;
+.jogo-novoJogo{    
+    margin: 5px;
+    width: 120px;
+    padding: 0 5px;
     cursor: pointer;
-    z-index: 999;
 }
 
 .the-end{
-    width: 80%;
-    height: 80vh;
-    left: 10%;
-    top: 10vh;
+    height: 50%;   
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     border: 4px solid black;
     opacity: 0%;
-    position: fixed;
-    src: url('https://y.yarn.co/dca4b147-ff9f-4881-8bbd-aa182eb4fbb3_text.gif');
     z-index: 999;
 }
 
-canvas{
-    position: fixed;
-    top:0px;
-    left: 50px;
-    z-index: 999;
-    display: none;
+
+/*ANIMAÇÃO DE ERRO (class adicionada via JS)*/
+.animar-form{
+    animation-name: tremer;
+    animation-duration: 0.4s;
+    animation-iteration-count: 1;    
 }
+
+@keyframes tremer {
+    12.5%{width: 248px;}
+    25%{width: 250px;}
+    37.5%{width: 248px;}
+    50%{width: 250px;}
+    62.5%{width: 248px;}
+    75%{width: 250px;}
+    87.5%{width: 248px;}
+    100%{width: 250px;}
+}
+
+.inputTexto::placeholder{
+    color: red;
+}
+.inputTexto{
+    background-color: rgb(250, 249, 178);
+}
+/*FIM DA ANIMAÇÃO DE ERRO (class adicionada via JS)*/
