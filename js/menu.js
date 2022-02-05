@@ -19,7 +19,7 @@ const imagens = ['https://y.yarn.co/dca4b147-ff9f-4881-8bbd-aa182eb4fbb3_text.gi
 
 input.addEventListener('input', () => {   
     
-    if (input.value.length < 9) {
+    if (input.value.length <= 10) {
         input.value = input.value.replaceAll(/[^a-zA-Z]/g, '').toUpperCase()
         textoTemporario = input.value
     } else {
@@ -52,6 +52,7 @@ function iniciarJogo(){
     tela.style.display = 'block';
     theEnd.style.opacity = '0%';
     theEnd.style.zIndex = '99';
+    theEnd.src = ''
     posicaoInicial = true;
     dificuldade = document.getElementById('menu-select');
     quantidadeDeBlocos = dificuldade.value;
@@ -97,7 +98,7 @@ function typeWrite(texto1, texto2) {
             }else{
                 texto2.innerHTML += letra;
             }            
-        }, 200 * i)               
+        }, 150 * i)               
     });
 }
 

@@ -1,6 +1,8 @@
 @font-face {
     font-family: 'help';
     src: url('/fonts/ChelseaMarket-Regular.ttf');
+    font-family: 'velhoOeste';
+    src: url('/fonts/RioGrande.ttf');
 }
 
 *{
@@ -17,49 +19,46 @@ body{
     height: 100vh;
     /* overflow: hidden; */
     background-color: white;
-    background-image: url('https://thumbs.gfycat.com/HeavenlyDisloyalGuillemot-max-1mb.gif');
+    background-image: url('https://i.pinimg.com/originals/3b/84/fc/3b84fc1ef6f450086df1663f61824446.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    margin: 0 auto;
+    margin: 0 auto;    
 }
 
-/* .body-img{
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    opacity: 0.3;
-} */
-
 .tela-inicial{
-    width: 60vw;
+    width: 80vw;
     height: 50vh;
     position: absolute;
     transform: translate(15%,30%);
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     padding: 50px 0;
-    /* background-color: rgb(248, 228, 160); */
-    align-items: center;
+    font-size: 35px; 
+    color: rgb(231, 231, 231);    
 }
 
-.tela-inicial-jogo{
-    font-size: 80px;     
-    background-color: #222; 
+.tela-inicial-jogo{       
+    font-family: 'velhoOeste'; 
+    background-color: rgba(20,20,20,.9); 
     width: fit-content;
-    margin-right: 20%;
-    color: rgb(231, 231, 231);
+    margin-right: 10%;
     padding: 0 15px;
+    border-left: 5px solid #bb8136;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
 }
-.tela-inicial-forca{
-    font-size: 80px;     
-    background-color: #222; 
+.tela-inicial-forca{  
+    font-family: 'velhoOeste';
+    background-color: rgba(20,20,20,.9); 
     width: fit-content;
     text-align: center;
     margin-left: 30%;
-    color: rgb(231, 231, 231);
+    margin-top: 20px;
     padding: 0 15px;
+    border-left: 5px solid #bb8136;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
 }
 /* MENU*/
 
@@ -68,7 +67,7 @@ body{
     position: fixed;
     right: 0;
     margin: 10px 20px;
-    cursor: pointer;
+    cursor: pointer; 
 }
 
 .menu:hover{
@@ -84,8 +83,11 @@ body{
     align-items: center;
     right: 0;
     overflow: hidden;
-    border-left: 2px solid #ccc;
     width: 100%;
+    background-image: url('https://st.depositphotos.com/1665130/1362/i/600/depositphotos_13620562-stock-photo-old-paper-on-the-wood.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .menu-show{
@@ -101,37 +103,45 @@ body{
 .img-menu{
     width: 50px;
     position: absolute;
-    left: 0;
-    transform: rotate(180deg);
+    right: 10px;
+    top: 10px;
     cursor: pointer;
 }
+.img-menu:hover{
+    transform: scale(1.1);
+}
 
-.img-menu-animation{
-    transform: rotate(360deg);
-}
-.menu-texto{
-    color: white;
-    font-size: 26px;
+.menu-texto{    
+    font-family: 'velhoOeste'; 
+    color: black;
+    font-size: 28px;
     height: 50px;
-    width: 100%;
+    width: 250px;
     text-align: center;
+    margin-top: 75px;
     padding-top: 8px;
-}
+    background-color: #dd9a42;
+    box-shadow: 2px 5px 5px 1px ;
+} 
 
 .menu-input, .menu-btn, .menu-select{
+    font-family: 'velhoOeste'; 
     width: 250px;
     height: 50px;
-    margin: 0 75px;
     margin-top: 15px;
     padding-left: 5px;
+    border-radius: 5px;
+    box-shadow: 2px 5px 5px 1px ;
+    font-size: 20px;
 }
 .menu-input{
     margin-top: 100px;
 }
 
 .menu-btn{
-    background-color: rgb(15, 43, 201);
-    color: whitesmoke;
+    background-color: #dd9a42;
+    color: black;
+    font-weight: bold;
     border-color: whitesmoke;
 }
 
@@ -140,12 +150,13 @@ body{
 }
 
 .jogo{
+    position: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: none;
     color: rgb(0, 0, 0);
     background-color: rgba(255,255,255,0.9);
@@ -166,7 +177,7 @@ canvas{
     font-size: 16px;
     text-align: center;    
     width: fit-content;
-    margin: 10px auto;
+    margin: 2px auto;
 }
 .valor, .fim{     
     width: fit-content;
@@ -185,6 +196,7 @@ canvas{
 
 .fim-img{
     max-height: 30px;
+    margin-right: 10px;
 }
 
 .alfabeto{
@@ -213,6 +225,10 @@ canvas{
     justify-content: center;
     align-items: center;
 }
+
+.btn-final{
+    font-size: 12px;
+}
 .jogo-novoJogo{    
     margin: 5px;
     width: 120px;
@@ -221,7 +237,7 @@ canvas{
 }
 
 .the-end{
-    height: 50%;   
+    width: 80%;   
     position: absolute;
     left: 50%;
     top: 50%;
@@ -229,6 +245,7 @@ canvas{
     border: 4px solid black;
     opacity: 0%;
     z-index: 999;
+    cursor: pointer;
 }
 
 
@@ -257,3 +274,76 @@ canvas{
     background-color: rgb(250, 249, 178);
 }
 /*FIM DA ANIMAÇÃO DE ERRO (class adicionada via JS)*/
+
+footer{
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    background-color: #222;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 10px;
+}
+
+footer img{
+    max-height: 25px;
+    border: 2px solid white;
+    border-radius: 50%;    
+    margin-left: 10px;
+}
+
+footer img:hover{
+    transform: scale(1.1);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+footer ul{
+    display: flex;
+}
+
+@media screen and (min-width: 700px) {
+
+    .tela-inicial{
+        font-size: 80px; 
+    }
+      
+    canvas{
+        margin-top: 15px;
+    }
+
+    .alfabeto{
+        width: 45%;
+        
+    }
+
+    .container, .cemiterio{
+        margin-top: 20px;
+    }
+    .valor, .fim{     
+        min-width: 35px;
+        font-size: 35px;
+        height: 42px;
+    }
+    
+    .fim{
+        font-family: help;
+        color: red;
+    }
+    
+    .fim-img{
+        max-height: 42px;
+       
+    }
+
+    .botoes{
+        margin-top: 15px;
+    }
+}

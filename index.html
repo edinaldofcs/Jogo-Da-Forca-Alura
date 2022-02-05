@@ -7,10 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Beastly&display=swap" rel="stylesheet">
-
     <title>Forca</title>
 
 </head>
@@ -22,15 +18,15 @@
         <div class="tela-inicial-jogo" id="tela-inicial-jogo">JOGO DA FORCA</div>
         <div class="tela-inicial-forca" id="tela-inicial-forca"></div>
     </section>
-    <img id="menu" class="menu" src="./imagens/barra-de-menu.png" />
+    <img id="menu" class="menu" src="./imagens/menu.png" />
 
     <section id="menu-config" class="menu-config menu-hide">
-        <img id="img-menu" class="img-menu" src="./imagens/multiplicar.png" />
+        <img id="img-menu" class="img-menu" src="https://cdn-icons-png.flaticon.com/512/3997/3997267.png" />
         <span class='menu-texto'>MENU</span>
         <input id="input" type="text" placeholder="adicione uma palavra" class="menu-input" />
         <button id="inserir" class="menu-btn">INSERIR</button>
         <select class="menu-select" id="menu-select">
-            <option value='4'>--MÁXIMO DE ERROS--</option>
+            <option value='4'>--MAXIMO DE ERROS--</option>
             <option value='4'>4</option>
             <option value='5'>5</option>
             <option value='6'>6</option>
@@ -50,13 +46,22 @@
         <div id="alfabeto" class="alfabeto">
         </div>
         <div id="botoes" class="botoes">
-            <button class="menu-btn jogo-novoJogo" id="reiniciar">Novo Jogo</button>
-            <button class="menu-btn jogo-novoJogo reset" id="reset">Menu Principal</button>
+            <button class="menu-btn jogo-novoJogo btn-final" id="reiniciar">Novo Jogo</button>
+            <button class="menu-btn jogo-novoJogo btn-final" id="reset">Menu Principal</button>
             <img id="theend" class="the-end" />
         </div>
 
     </section>
-    <footer></footer>
+
+    <footer>        
+        <nav class="nav-footer">
+            <span>Desenvolvedor: <strong>EdinaldoFCS</strong></span>
+            <ul>
+                <li><a href="https://www.linkedin.com/in/edinaldofcs-dev/" target="_blank"><img src="/imagens/linkedin.png" alt="Linkedin"></a></li>
+                <li><a href="https://github.com/Edinaldofcs" target="_blank"><img src="/imagens/github.png" alt="GitHub"></a></li>
+            </ul>
+        </nav>
+    </footer>
 
     <script src="./js/logicaDoJogo.js"></script>
     <script src="./js/menu.js"></script>

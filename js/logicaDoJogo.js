@@ -4,7 +4,7 @@ const container = document.getElementById('container');
 const sons = ['./sounds/yes.mp3', './sounds/errojogo.mp3', './sounds/morte.mp3', './sounds/acerto.mp3']
 
 var dificuldade;
-var palavra = ['ALURA', 'JAVASCRIPT', 'ALURAVERSO', 'REACT'];
+var palavra = ['ALURA', 'JAVASCRIPT', 'ALURAVERSO', 'REACT', 'DESAFIO', 'MACARRAO', 'BANANA', 'TECLADO', 'VIOLAO', 'CONTROLE', 'IMERSAO', 'CELULAR', 'CADEIRA', 'CONDENADO'];
 var numeroLista, espacoLetrasCertas, espacoLetrasErradas;
 var letrasNoCemiterio = 0;
 var qtdeLetrasEncontradas = 0;
@@ -65,11 +65,11 @@ function inserirTexto(texto, letra) {
         if (letra == texto[i] && espacoLetrasCertas[i].innerHTML == '') {
             espacoLetrasCertas[i].innerHTML = letra;
             qtdeLetrasEncontradas++;
+            tocar(sons[0]);
         }
     }
 
     pintarLetras(letra, 'green');
-    tocar(sons[0]);
     verificarVitoria(qtdeLetrasEncontradas, texto.length);
 }
 
@@ -87,9 +87,7 @@ function verificarVitoria(cont, texto) {
 function adicionarAoCemiterio(letra) {
     if (letrasNoCemiterio == 0) {
         let el = setElemento('div', cemiterio, 'fim', 'fim');
-        el.innerHTML = letra;
-        letrasNoCemiterio++;
-        espacoLetrasErradas = selecionarElementos('#fim');
+        executar(el);
     } else {
         var contem = false;
         for (var i = 0; i < espacoLetrasErradas.length; i++) {
@@ -97,17 +95,22 @@ function adicionarAoCemiterio(letra) {
         }
         if (contem == false) {
             let el = setElemento('div', cemiterio, 'fim', 'fim');
-            el.innerHTML = letra;
-            letrasNoCemiterio++;
+            executar(el);
         }
     }
-    espacoLetrasErradas = selecionarElementos('#fim');
-    pintarLetras(letra, 'red');
-    tocar(sons[1])
-    verificarDerrota(letrasNoCemiterio, dificuldade.value);
-    posicao1();
-    quantidadeDeBlocos--;
-    plataforma(quantidadeDeBlocos)
+
+    function executar(elemento) {
+
+        elemento.innerHTML = letra;
+        espacoLetrasErradas = selecionarElementos('#fim');
+        letrasNoCemiterio++;
+        quantidadeDeBlocos--;
+        plataforma(quantidadeDeBlocos)
+        tocar(sons[1]);
+        pintarLetras(letra, 'red');
+        verificarDerrota(letrasNoCemiterio, dificuldade.value);
+        posicao1();
+    }
 }
 
 
