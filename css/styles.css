@@ -119,16 +119,17 @@ body{
 .menu-texto{    
     text-align: center;
     padding-top: 15px;
-    background-color: #dd9a42;
-    box-shadow: 2px 5px 5px 1px ;    
+    background-color: #f4e0b5;
+    box-shadow: 2px 5px 5px 1px ;  
 } 
-.menu-input, .menu-texto{
+.menu-btn:hover{
     cursor: auto;
+    transform: scale(1.05);
 }
 
 
 .menu-btn{
-    background-color: #dd9a42;
+    background-color: #f4e0b5;
     color: black;
     font-weight: bold;
     border-color: whitesmoke;
@@ -137,6 +138,28 @@ body{
 .menu-select{
     text-align: center;
 }
+
+
+.alerta{
+    position: absolute;
+    top: 100px;
+    display: none;
+    opacity: 0%;
+}
+
+.anima-alerta{
+    animation-name: aparecerSumir;
+    animation-duration: 2s;
+    animation-iteration-count: 1;    
+}
+
+@keyframes aparecerSumir {
+    25%{opacity: 50%}
+    50%{opacity: 100%}
+    75%{opacity: 500%}
+    100%{opacity: 0%}
+}
+
 
 .jogo{
     position: fixed;

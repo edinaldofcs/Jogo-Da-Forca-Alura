@@ -17,8 +17,8 @@ var textoTemporario = '';
 var theEnd = document.getElementById('theend')
 const imagens = ['https://y.yarn.co/dca4b147-ff9f-4881-8bbd-aa182eb4fbb3_text.gif', 'https://i.gifer.com/8EzY.gif'];
 
-input.addEventListener('input', () => {   
-    
+input.addEventListener('input', () => {
+
     if (input.value.length <= 10) {
         input.value = input.value.replaceAll(/[^a-zA-Z]/g, '').toUpperCase()
         textoTemporario = input.value
@@ -28,27 +28,45 @@ input.addEventListener('input', () => {
     input.classList.remove('inputTexto');
 })
 
-inserir.addEventListener('click', ()=>{
-    if(input.value.length >= 5){
+inserir.addEventListener('click', () => {
+    if (input.value.length >= 5) {
         palavra.push(input.value)
         input.value = ''
         //console.log(palavra[0])
-    } else{
+        animarAlerta('green', 'white', 'PALAVRA ADICIONADA');
+    } else {
         validarInput(input, true);
+        animarAlerta('rgb(247, 63, 93)', 'black', 'CAMPO INVÁLIDO');
     }
+
+
 })
 
-iniciar.addEventListener('click', ()=>{
+function animarAlerta(corBack, corFont, texto) {
+    var alerta = document.getElementById('alerta')
+    alerta.style.backgroundColor = corBack;
+    alerta.style.color = corFont;
+    alerta.innerHTML = texto;
+    alerta.style.display = 'block';
+    alerta.classList.add('anima-alerta');
+    setTimeout(() => {
+        alerta.classList.remove('anima-alerta');
+        alerta.style.display = 'none';
+    }, 2000)
+}
 
-    if(dificuldade.value == '') {
+iniciar.addEventListener('click', () => {
+
+    if (dificuldade.value == '') {
         validarInput(dificuldade, true);
+        animarAlerta('rgb(247, 63, 93)', 'black', 'QUANTIDADE INVÁLIDA');
         return;
     }
     setAlfabeto();
     iniciarJogo();
 })
 
-function iniciarJogo(){
+function iniciarJogo() {
     divMenu.style.display = 'none'
     telaInicial.style.display = 'none'
     // body.style.backgroundColor = 'white';
@@ -75,20 +93,20 @@ imgFecharMenu.addEventListener('click', () => {
     divMenu.classList.add('menu-hide')
 })
 
-reiniciar.addEventListener('click', ()=>{
+reiniciar.addEventListener('click', () => {
     pintarTudo();
     container.innerHTML = ''
     cemiterio.innerHTML = ''
     letrasNoCemiterio = 0;
-    qtdeLetrasEncontradas = 0;    
+    qtdeLetrasEncontradas = 0;
     cemiterio.innerHTML = `<img class="fim-img" src="https://cdn.pixabay.com/photo/2014/04/03/11/54/headstone-312540_960_720.png"/>`;
     posicaoInicial = 2;
-    animarMorte();    
+    animarMorte();
     iniciarJogo();
 })
 
 
-reset.addEventListener('click', ()=>{
+reset.addEventListener('click', () => {
     location.reload();
 })
 
@@ -98,17 +116,17 @@ function typeWrite(texto1, texto2) {
     textArray.forEach(function (letra, i) {
 
         setTimeout(function () {
-            if(i < 7){
+            if (i < 7) {
                 texto1.innerHTML += letra;
-            }else{
+            } else {
                 texto2.innerHTML += letra;
-            }            
-        }, 150 * i)               
+            }
+        }, 150 * i)
     });
 }
 
 
-theEnd.addEventListener('click', ()=>{
+theEnd.addEventListener('click', () => {
     theEnd.style.opacity = '0%';
     theEnd.style.zIndex = '-1';
 })
@@ -117,20 +135,20 @@ typeWrite(telainicialTexto1, telainicialTexto2);
 
 
 
-function validarInput(botao, condicao){
+function validarInput(botao, condicao) {
 
-    if (!botao.classList.contains('inputTexto')) {
-        botao.classList.add('inputTexto');
-        if(condicao)botao.classList.add('animar-form');
-    } else {
+
+    botao.classList.add('inputTexto');
+    setTimeout(() => {
         botao.classList.remove('inputTexto');
-    }
+        //input.classList.remove('inputTexto')        
+    }, 400)
 
-    if (condicao) {
-        setTimeout(() => {
-            botao.classList.remove('animar-form');
-            //input.classList.remove('inputTexto')        
-        }, 400)        
-    }
+    botao.classList.add('animar-form');
+    setTimeout(() => {
+        botao.classList.remove('animar-form');
+        //input.classList.remove('inputTexto')        
+    }, 400)
+
 }
 
