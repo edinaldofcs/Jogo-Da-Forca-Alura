@@ -114,16 +114,21 @@ body{
     border-radius: 5px;
     box-shadow: 2px 5px 5px 1px ;
     font-size: 20px;
-    cursor: pointer;
 }
 .menu-texto{    
     text-align: center;
-    padding-top: 15px;
-    background-color: #f4e0b5;
-    box-shadow: 2px 5px 5px 1px ;  
+    line-height: 50px;
+    background-color: #0c0c0c;
+    box-shadow: none ; 
+    color: white; 
+    font-size: 26px;
 } 
+
+.alerta{
+    font-size: 20px;
+}
 .menu-btn:hover{
-    cursor: auto;
+    cursor: pointer;
     transform: scale(1.05);
 }
 
@@ -297,7 +302,7 @@ footer{
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 footer img{
@@ -356,5 +361,15 @@ footer ul{
 
     .botoes{
         margin-top: 15px;
+    }
+
+
+    footer{
+        height: 60px;
+        font-size: 20px;
+    }
+    
+    footer img{
+        max-height: 40px;
     }
 }
