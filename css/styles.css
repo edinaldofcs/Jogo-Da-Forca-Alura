@@ -1,0 +1,337 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    /* overflow: hidden; */
+    background-color: white;
+    background-image: url('https://i.pinimg.com/originals/3b/84/fc/3b84fc1ef6f450086df1663f61824446.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 auto;    
+}
+
+.tela-inicial{
+    width: 80vw;
+    height: 50vh;
+    position: absolute;
+    transform: translate(15%,30%);
+    display: flex;
+    flex-direction: column;
+    padding: 50px 0;
+    font-size: 35px; 
+    color: rgb(231, 231, 231);    
+}
+
+.tela-inicial-jogo{       
+    font-family: 'Sancreek', cursive;
+    background-color: rgba(20,20,20,.9); 
+    width: fit-content;
+    margin-right: 10%;
+    padding: 0 15px;
+    border-left: 5px solid #bb8136;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+.tela-inicial-forca{  
+    font-family: 'Sancreek', cursive;
+    background-color: rgba(20,20,20,.9); 
+    width: fit-content;
+    text-align: center;
+    margin-left: 30%;
+    margin-top: 20px;
+    padding: 0 15px;
+    border-left: 5px solid #bb8136;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+/* MENU*/
+
+.menu{
+    width: 50px;
+    position: fixed;
+    right: 0;
+    margin: 10px 20px;
+    cursor: pointer; 
+}
+
+.menu:hover{
+    transform: scale(1.1);
+}
+
+.menu-config{    
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    background-image: url('https://st.depositphotos.com/1665130/1362/i/600/depositphotos_13620562-stock-photo-old-paper-on-the-wood.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.menu-show{
+    transition: 0.5s;
+    width: 100%;    
+}
+
+.menu-hide{
+    transition: 0.5s;
+    width: 0px;
+}
+
+.img-menu{
+    width: 50px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+.img-menu:hover{
+    transform: scale(1.1);
+}
+
+
+.menu-input, .menu-btn, .menu-select, .menu-texto{
+    font-family: 'Sancreek', cursive;
+    width: 250px;
+    height: 50px;
+    margin-top: 15px;
+    padding-left: 5px;
+    border-radius: 5px;
+    box-shadow: 2px 5px 5px 1px ;
+    font-size: 20px;
+    cursor: pointer;
+}
+.menu-texto{    
+    text-align: center;
+    padding-top: 15px;
+    background-color: #dd9a42;
+    box-shadow: 2px 5px 5px 1px ;    
+} 
+.menu-input, .menu-texto{
+    cursor: auto;
+}
+
+
+.menu-btn{
+    background-color: #dd9a42;
+    color: black;
+    font-weight: bold;
+    border-color: whitesmoke;
+}
+
+.menu-select{
+    text-align: center;
+}
+
+.jogo{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    display: none;
+    color: rgb(0, 0, 0);
+    background-color: rgba(255,255,255,0.9);
+}
+
+canvas{    
+    margin: 0 auto;
+    z-index: 999;
+    /* display: none; */
+}
+.container, .cemiterio{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgba(212, 212, 211, 0.4); */
+    height: 50px;
+    font-size: 16px;
+    text-align: center;    
+    width: fit-content;
+    margin: 2px auto;
+}
+.valor, .fim{     
+    width: fit-content;
+    min-width: 20px;
+    font-size: 20px;
+    margin: 0 2px;
+    height: 30px;
+    border-bottom: 2px solid rgb(0, 0, 0);
+    padding-bottom: 2px;
+}
+
+.fim{
+    font-family: 'Nosifer', cursive;
+    color: red;
+}
+
+.fim-img{
+    max-height: 30px;
+    margin-right: 10px;
+}
+
+.alfabeto{
+    width: 80%;
+    height: fit-content;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: white;
+    border: 1px solid black;
+    margin: 0 auto;
+}
+.letra{
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+    border-color: #ccc;
+    cursor: pointer;
+}
+
+.botoes{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-final{
+    font-size: 12px;
+}
+.jogo-novoJogo{    
+    margin: 5px;
+    width: 120px;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.the-end{
+    width: 80%;   
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 4px solid black;
+    opacity: 0%;
+    z-index: 999;
+    cursor: pointer;
+}
+
+
+/*ANIMAÇÃO DE ERRO (class adicionada via JS)*/
+.animar-form{
+    animation-name: tremer;
+    animation-duration: 0.4s;
+    animation-iteration-count: 1;    
+}
+
+@keyframes tremer {
+    12.5%{width: 246px;}
+    25%{width: 250px;}
+    37.5%{width: 246px;}
+    50%{width: 250px;}
+    62.5%{width: 246px;}
+    75%{width: 250px;}
+    87.5%{width: 246px;}
+    100%{width: 250px;}
+}
+
+.inputTexto::placeholder{
+    color: red;
+}
+.inputTexto{
+    background-color: rgb(250, 249, 178);
+}
+/*FIM DA ANIMAÇÃO DE ERRO (class adicionada via JS)*/
+
+footer{
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    background-color: #222;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 10px;
+}
+
+footer img{
+    max-height: 25px;
+    border: 2px solid white;
+    border-radius: 50%;    
+    margin-left: 10px;
+}
+
+footer img:hover{
+    transform: scale(1.1);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+footer ul{
+    display: flex;
+}
+
+@media screen and (min-width: 700px) {
+
+    .tela-inicial{
+        font-size: 80px; 
+    }
+      
+    canvas{
+        margin-top: 15px;
+    }
+
+    .alfabeto{
+        width: 45%;
+        
+    }
+
+    .container, .cemiterio{
+        margin-top: 20px;
+    }
+    .valor, .fim{     
+        min-width: 35px;
+        font-size: 35px;
+        height: 42px;
+    }
+    
+    .fim{
+        color: red;
+    }
+    
+    .fim-img{
+        max-height: 42px;
+       
+    }
+
+    .botoes{
+        margin-top: 15px;
+    }
+}

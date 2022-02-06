@@ -6,6 +6,7 @@ const input = document.getElementById('input')
 const inserir = document.getElementById('inserir')
 const iniciar = document.getElementById('iniciar')
 const reiniciar = document.getElementById('reiniciar')
+const reset = document.getElementById('reset')
 
 const telainicialTexto1 = document.querySelector('#tela-inicial-jogo');
 const telainicialTexto2 = document.querySelector('#tela-inicial-forca');
@@ -13,14 +14,18 @@ const telaInicial = document.querySelector('#tela-inicial');
 const body = document.querySelector('body');
 
 var textoTemporario = '';
+var theEnd = document.getElementById('theend')
+const imagens = ['https://y.yarn.co/dca4b147-ff9f-4881-8bbd-aa182eb4fbb3_text.gif', 'https://i.gifer.com/8EzY.gif'];
 
 input.addEventListener('input', () => {   
-    if (input.value.length < 9) {
+    
+    if (input.value.length <= 10) {
         input.value = input.value.replaceAll(/[^a-zA-Z]/g, '').toUpperCase()
         textoTemporario = input.value
     } else {
         input.value = textoTemporario
     }
+    input.classList.remove('inputTexto');
 })
 
 inserir.addEventListener('click', ()=>{
@@ -29,19 +34,34 @@ inserir.addEventListener('click', ()=>{
         input.value = ''
         //console.log(palavra[0])
     } else{
-        //animar
+        validarInput(input, true);
     }
 })
 
-iniciar.addEventListener('click', iniciarJogo)
+iniciar.addEventListener('click', ()=>{
+
+    if(dificuldade.value == '') {
+        validarInput(dificuldade, true);
+        return;
+    }
+    setAlfabeto();
+    iniciarJogo();
+})
 
 function iniciarJogo(){
     divMenu.style.display = 'none'
     telaInicial.style.display = 'none'
-    body.classList.add('body')
+    // body.style.backgroundColor = 'white';
     imgMenu.style.display = 'none';
     esconderMostrarJogo.style.display = 'block';
     tela.style.display = 'block';
+    theEnd.style.opacity = '0%';
+    theEnd.style.zIndex = '99';
+    theEnd.src = ''
+    posicaoInicial = true;
+    dificuldade = document.getElementById('menu-select');
+    quantidadeDeBlocos = dificuldade.value;
+    plataforma(dificuldade.value);
     escolherPalavra();
 }
 
@@ -56,14 +76,20 @@ imgFecharMenu.addEventListener('click', () => {
 })
 
 reiniciar.addEventListener('click', ()=>{
+    pintarTudo();
     container.innerHTML = ''
     cemiterio.innerHTML = ''
     letrasNoCemiterio = 0;
-    qtdeLetrasEncontradas = 0;
-    cemiterio.innerHTML = `<img class="fim" src="https://cdn.pixabay.com/photo/2014/04/03/11/54/headstone-312540_960_720.png" width="50px" />`;
+    qtdeLetrasEncontradas = 0;    
+    cemiterio.innerHTML = `<img class="fim-img" src="https://cdn.pixabay.com/photo/2014/04/03/11/54/headstone-312540_960_720.png"/>`;
     posicaoInicial = 2;
     animarMorte();    
     iniciarJogo();
+})
+
+
+reset.addEventListener('click', ()=>{
+    location.reload();
 })
 
 function typeWrite(texto1, texto2) {
@@ -77,10 +103,34 @@ function typeWrite(texto1, texto2) {
             }else{
                 texto2.innerHTML += letra;
             }            
-        }, 200 * i)               
+        }, 150 * i)               
     });
 }
 
+
+theEnd.addEventListener('click', ()=>{
+    theEnd.style.opacity = '0%';
+    theEnd.style.zIndex = '-1';
+})
+
 typeWrite(telainicialTexto1, telainicialTexto2);
 
+
+
+function validarInput(botao, condicao){
+
+    if (!botao.classList.contains('inputTexto')) {
+        botao.classList.add('inputTexto');
+        if(condicao)botao.classList.add('animar-form');
+    } else {
+        botao.classList.remove('inputTexto');
+    }
+
+    if (condicao) {
+        setTimeout(() => {
+            botao.classList.remove('animar-form');
+            //input.classList.remove('inputTexto')        
+        }, 400)        
+    }
+}
 

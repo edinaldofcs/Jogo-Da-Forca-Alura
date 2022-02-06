@@ -5,31 +5,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
-
+    <link rel="stylesheet" href="./css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Beastly&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&family=Sancreek&display=swap" rel="stylesheet">
 
+    <link rel="icon" type="imagem/png"
+        href="https://cdn-icons.flaticon.com/png/512/2263/premium/2263798.png?token=exp=1644123595~hmac=bc0ecec02f3a8068ae1c6e3685eac810" />
     <title>Forca</title>
+
 </head>
 
-<body>    
-    <img id="body-img" class="body-img" src="https://thumbs.gfycat.com/HeavenlyDisloyalGuillemot-max-1mb.gif"/>
-    <canvas width="600" height="600"></canvas>
+<body>
+    <!-- <img id="body-img" class="body-img" src="https://thumbs.gfycat.com/HeavenlyDisloyalGuillemot-max-1mb.gif" /> -->
 
     <section id="tela-inicial" class="tela-inicial">
         <div class="tela-inicial-jogo" id="tela-inicial-jogo">JOGO DA FORCA</div>
         <div class="tela-inicial-forca" id="tela-inicial-forca"></div>
     </section>
-    <img id="menu" class="menu" src="./imagens/barra-de-menu.png" />
+    <img id="menu" class="menu" src="./imagens/menu.png" />
+
     <section id="menu-config" class="menu-config menu-hide">
-        <img id="img-menu" class="img-menu" src="./imagens/multiplicar.png" />
+        <img id="img-menu" class="img-menu" src="https://cdn-icons-png.flaticon.com/512/3997/3997267.png" />
         <span class='menu-texto'>MENU</span>
         <input id="input" type="text" placeholder="adicione uma palavra" class="menu-input" />
         <button id="inserir" class="menu-btn">INSERIR</button>
         <select class="menu-select" id="menu-select">
-            <option value='4'>--MÁXIMO DE ERROS--</option>
+            <option value=''>--MAXIMO DE ERROS--</option>
             <option value='4'>4</option>
             <option value='5'>5</option>
             <option value='6'>6</option>
@@ -38,15 +40,39 @@
         </select>
         <button id="iniciar" class="menu-btn">INICIAR</button>
     </section>
-    <section id="jogo" class="jogo">   
-        <button class="menu-btn jogo-novoJogo" id="reiniciar">Novo Jogo</button>   
+
+    <section id="jogo" class="jogo">
+        <canvas width="300" height="200"></canvas>
+
         <div id="container" class="container"></div>
-        <div id="cemiterio" class="cemiterio"><img class="fim" src="https://cdn.pixabay.com/photo/2014/04/03/11/54/headstone-312540_960_720.png" width="50px" /></div>
+        <div id="cemiterio" class="cemiterio">
+            <img class="fim-img" src="https://cdn.pixabay.com/photo/2014/04/03/11/54/headstone-312540_960_720.png" />
+        </div>
+        <div id="alfabeto" class="alfabeto">
+        </div>
+        <div id="botoes" class="botoes">
+            <button class="menu-btn jogo-novoJogo btn-final" id="reiniciar">Novo Jogo</button>
+            <button class="menu-btn jogo-novoJogo btn-final" id="reset">Menu Principal</button>
+            <img id="theend" class="the-end" />
+        </div>
+
     </section>
 
-    <script src="./logicaDoJogo.js"></script>
-    <script src="./menu.js"></script>
-    <script src="./canvas.js"></script>
+    <footer>
+        <nav class="nav-footer">
+            <span>Desenvolvedor: <strong>EdinaldoFCS</strong></span>
+            <ul>
+                <li><a href="https://www.linkedin.com/in/edinaldofcs-dev/" target="_blank"><img
+                            src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="Linkedin"></a></li>
+                <li><a href="https://github.com/Edinaldofcs" target="_blank"><img
+                            src="https://cdn-icons-png.flaticon.com/512/270/270798.png" alt="GitHub"></a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    <script src="./js/logicaDoJogo.js"></script>
+    <script src="./js/menu.js"></script>
+    <script src="./js/canvas.js"></script>
 </body>
 
 </html>
