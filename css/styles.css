@@ -1,10 +1,3 @@
-@font-face {
-    font-family: 'help';
-    src: url('/fonts/ChelseaMarket-Regular.ttf');
-    font-family: 'velhoOeste';
-    src: url('/fonts/RioGrande.ttf');
-}
-
 *{
     padding: 0;
     margin: 0;
@@ -39,7 +32,7 @@ body{
 }
 
 .tela-inicial-jogo{       
-    font-family: 'velhoOeste'; 
+    font-family: 'Sancreek', cursive;
     background-color: rgba(20,20,20,.9); 
     width: fit-content;
     margin-right: 10%;
@@ -49,7 +42,7 @@ body{
     border-bottom-right-radius: 30px;
 }
 .tela-inicial-forca{  
-    font-family: 'velhoOeste';
+    font-family: 'Sancreek', cursive;
     background-color: rgba(20,20,20,.9); 
     width: fit-content;
     text-align: center;
@@ -81,7 +74,7 @@ body{
     flex-direction: column;
     background-color: black;
     align-items: center;
-    right: 0;
+    justify-content: center;
     overflow: hidden;
     width: 100%;
     background-image: url('https://st.depositphotos.com/1665130/1362/i/600/depositphotos_13620562-stock-photo-old-paper-on-the-wood.jpg');
@@ -111,21 +104,9 @@ body{
     transform: scale(1.1);
 }
 
-.menu-texto{    
-    font-family: 'velhoOeste'; 
-    color: black;
-    font-size: 28px;
-    height: 50px;
-    width: 250px;
-    text-align: center;
-    margin-top: 75px;
-    padding-top: 8px;
-    background-color: #dd9a42;
-    box-shadow: 2px 5px 5px 1px ;
-} 
 
-.menu-input, .menu-btn, .menu-select{
-    font-family: 'velhoOeste'; 
+.menu-input, .menu-btn, .menu-select, .menu-texto{
+    font-family: 'Sancreek', cursive;
     width: 250px;
     height: 50px;
     margin-top: 15px;
@@ -133,10 +114,18 @@ body{
     border-radius: 5px;
     box-shadow: 2px 5px 5px 1px ;
     font-size: 20px;
+    cursor: pointer;
 }
-.menu-input{
-    margin-top: 100px;
+.menu-texto{    
+    text-align: center;
+    padding-top: 15px;
+    background-color: #dd9a42;
+    box-shadow: 2px 5px 5px 1px ;    
+} 
+.menu-input, .menu-texto{
+    cursor: auto;
 }
+
 
 .menu-btn{
     background-color: #dd9a42;
@@ -190,7 +179,7 @@ canvas{
 }
 
 .fim{
-    font-family: help;
+    font-family: 'Nosifer', cursive;
     color: red;
 }
 
@@ -257,13 +246,13 @@ canvas{
 }
 
 @keyframes tremer {
-    12.5%{width: 248px;}
+    12.5%{width: 246px;}
     25%{width: 250px;}
-    37.5%{width: 248px;}
+    37.5%{width: 246px;}
     50%{width: 250px;}
-    62.5%{width: 248px;}
+    62.5%{width: 246px;}
     75%{width: 250px;}
-    87.5%{width: 248px;}
+    87.5%{width: 246px;}
     100%{width: 250px;}
 }
 
@@ -334,7 +323,6 @@ footer ul{
     }
     
     .fim{
-        font-family: help;
         color: red;
     }
     

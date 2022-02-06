@@ -34,11 +34,16 @@ inserir.addEventListener('click', ()=>{
         input.value = ''
         //console.log(palavra[0])
     } else{
-        validarInput(true);
+        validarInput(input, true);
     }
 })
 
 iniciar.addEventListener('click', ()=>{
+
+    if(dificuldade.value == '') {
+        validarInput(dificuldade, true);
+        return;
+    }
     setAlfabeto();
     iniciarJogo();
 })
@@ -112,18 +117,18 @@ typeWrite(telainicialTexto1, telainicialTexto2);
 
 
 
-function validarInput(condicao){
+function validarInput(botao, condicao){
 
-    if (!input.classList.contains('inputTexto')) {
-        input.classList.add('inputTexto');
-        if(condicao)input.classList.add('animar-form');
+    if (!botao.classList.contains('inputTexto')) {
+        botao.classList.add('inputTexto');
+        if(condicao)botao.classList.add('animar-form');
     } else {
-        input.classList.remove('inputTexto');
+        botao.classList.remove('inputTexto');
     }
 
     if (condicao) {
         setTimeout(() => {
-            input.classList.remove('animar-form');
+            botao.classList.remove('animar-form');
             //input.classList.remove('inputTexto')        
         }, 400)        
     }

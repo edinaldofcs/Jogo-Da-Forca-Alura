@@ -3,7 +3,7 @@ const cemiterio = document.getElementById('cemiterio');
 const container = document.getElementById('container');
 const sons = ['./sounds/yes.mp3', './sounds/errojogo.mp3', './sounds/morte.mp3', './sounds/acerto.mp3']
 
-var dificuldade;
+var dificuldade = document.getElementById('menu-select');
 var palavra = ['ALURA', 'JAVASCRIPT', 'ALURAVERSO', 'REACT', 'DESAFIO', 'MACARRAO', 'BANANA', 'TECLADO', 'VIOLAO', 'CONTROLE', 'IMERSAO', 'CELULAR', 'CADEIRA', 'CONDENADO'];
 var numeroLista, espacoLetrasCertas, espacoLetrasErradas;
 var letrasNoCemiterio = 0;
