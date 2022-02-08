@@ -177,9 +177,38 @@ body{
     background-color: rgba(255,255,255,0.9);
 }
 
+.mensagem{
+    position: absolute;
+    background-color: white;
+    color: black;
+    width: 100px;
+    left: 50%;
+    top: 50px;
+    transform: translate(-35%, 0);
+    text-align: center;
+    padding: 2px 8px;
+    border: 5px solid #222;
+    border-radius: 26px;
+    border-top-right-radius: 1px;
+    display: none;
+}
+.palavra-correta{
+    position: absolute;
+    top: 50%;
+    width: fit-content;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    z-index: 999;
+    text-align: center;
+    background-color: #0c0c0c;
+    color: white;
+    font-size: 24px;
+    display: none;
+}
 canvas{    
     margin: 0 auto;
-    z-index: 999;
+    z-index: 4;
     /* display: none; */
 }
 .container, .cemiterio{
@@ -221,8 +250,8 @@ canvas{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: white;
-    border: 1px solid black;
+    background-color: none;
+    border: none;
     margin: 0 auto;
 }
 .letra{
@@ -231,6 +260,9 @@ canvas{
     margin: 2px;
     border-color: #ccc;
     cursor: pointer;
+}
+.letra:hover{
+    transform: scale(1.05);
 }
 
 .botoes{
@@ -259,7 +291,7 @@ canvas{
     transform: translate(-50%, -50%);
     border: 4px solid black;
     opacity: 0%;
-    z-index: 999;
+    z-index: 2;
     cursor: pointer;
 }
 
@@ -330,13 +362,21 @@ footer ul{
         font-size: 80px; 
     }
       
+    .mensagem{
+        top: 65px;
+    }
     canvas{
         margin-top: 15px;
     }
 
     .alfabeto{
-        width: 45%;
+        width: 70%;
         
+    }
+    .letra{
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
     }
 
     .container, .cemiterio{

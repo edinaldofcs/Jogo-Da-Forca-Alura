@@ -35,7 +35,7 @@ inserir.addEventListener('click', () => {
         //console.log(palavra[0])
         animarAlerta('green', 'white', 'PALAVRA ADICIONADA');
     } else {
-        validarInput(input, true);
+        validarInput(input);
         animarAlerta('rgb(247, 63, 93)', 'black', 'CAMPO INVÁLIDO');
     }
 
@@ -58,7 +58,7 @@ function animarAlerta(corBack, corFont, texto) {
 iniciar.addEventListener('click', () => {
 
     if (dificuldade.value == '') {
-        validarInput(dificuldade, true);
+        validarInput(dificuldade);
         animarAlerta('rgb(247, 63, 93)', 'black', 'QUANTIDADE INVÁLIDA');
         return;
     }
@@ -67,6 +67,7 @@ iniciar.addEventListener('click', () => {
 })
 
 function iniciarJogo() {
+    palavracerta.style.display = 'none';
     divMenu.style.display = 'none'
     telaInicial.style.display = 'none'
     // body.style.backgroundColor = 'white';
@@ -74,7 +75,7 @@ function iniciarJogo() {
     esconderMostrarJogo.style.display = 'block';
     tela.style.display = 'block';
     theEnd.style.opacity = '0%';
-    theEnd.style.zIndex = '99';
+    theEnd.style.zIndex = '2';
     theEnd.src = ''
     posicaoInicial = true;
     dificuldade = document.getElementById('menu-select');
@@ -94,7 +95,7 @@ imgFecharMenu.addEventListener('click', () => {
 })
 
 reiniciar.addEventListener('click', () => {
-    pintarTudo();
+    pintarTodosOsBotoes();
     container.innerHTML = ''
     cemiterio.innerHTML = ''
     letrasNoCemiterio = 0;
@@ -135,8 +136,7 @@ typeWrite(telainicialTexto1, telainicialTexto2);
 
 
 
-function validarInput(botao, condicao) {
-
+function validarInput(botao) {
 
     botao.classList.add('inputTexto');
     setTimeout(() => {
