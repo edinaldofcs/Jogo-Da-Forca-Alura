@@ -1,6 +1,7 @@
 // Variáveis do jogo
 const cemiterio = document.getElementById('cemiterio');
 const container = document.getElementById('container');
+const palavracerta = document.getElementById('palavracorreta')
 const sons = ['./sounds/yes.mp3', './sounds/errojogo.mp3', './sounds/morte.mp3', './sounds/acerto.mp3']
 
 var dificuldade = document.getElementById('menu-select');
@@ -38,6 +39,7 @@ function montarJogo(palavraEscolhida) {
 function escolherPalavra() {
     numeroLista = Math.floor(Math.random() * palavra.length);
     montarJogo(palavra[numeroLista]);
+    palavracerta.innerHTML = `Palavra certa: ${palavra[numeroLista]}`;
 }
 
 
@@ -75,12 +77,16 @@ function inserirTexto(texto, letra) {
 
 function verificarVitoria(cont, texto) {
     if (cont == texto) {
+        converSarComUsuario('Você me salvou!');
+        palavracerta.style.display = 'block';
         setTimeout(() => {
             tocar(sons[3]);
             theEnd.style.opacity = '100%';
             theEnd.style.zIndex = '99';
             theEnd.src = imagens[0];
         }, 1000);
+    }else{
+        converSarComUsuario('Eu acredito em ti');
     }
 }
 
@@ -105,7 +111,7 @@ function adicionarAoCemiterio(letra) {
         espacoLetrasErradas = selecionarElementos('#fim');
         letrasNoCemiterio++;
         quantidadeDeBlocos--;
-        plataforma(quantidadeDeBlocos)
+        plataforma(quantidadeDeBlocos);
         tocar(sons[1]);
         pintarLetras(letra, 'red');
         verificarDerrota(letrasNoCemiterio, dificuldade.value);
@@ -116,6 +122,8 @@ function adicionarAoCemiterio(letra) {
 
 function verificarDerrota(cont, texto) {
     if (cont == texto) {
+        converSarComUsuario('Adeus...');
+        palavracerta.style.display = 'block';
         setTimeout(() => {
             animarMorte();
             tocar(sons[2])
@@ -125,12 +133,22 @@ function verificarDerrota(cont, texto) {
             theEnd.style.zIndex = '99';
             theEnd.src = imagens[1];
         }, 2000);
+    }else{
+        converSarComUsuario('Assim você me mata!');
     }
 }
 
+function converSarComUsuario(msg){
+
+    document.getElementById('mensagem').innerHTML = msg;
+    document.getElementById('mensagem').style.display = 'block';
+    setTimeout(() => {
+        document.getElementById('mensagem').style.display = 'none';
+    }, 1000);
+}
 
 
-//==============
+//========CRIAR BOTÕES COM AS LETRA DO ALFABETO======
 const alfabeto = document.getElementById('alfabeto')
 var botoesLetras;
 
@@ -152,10 +170,9 @@ function pintarLetras(idLetra, cor) {
             todos[index].style.backgroundColor = cor
         }
     }
-
 }
 
-function pintarTudo() {
+function pintarTodosOsBotoes() {
     var todo = document.querySelectorAll('.letra')
     for (var i = 0; i < todo.length; i++) {
         todo[i].style.backgroundColor = 'rgb(240, 240, 240)'
